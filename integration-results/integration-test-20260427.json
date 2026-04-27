@@ -1,0 +1,157 @@
+{
+  "compatibility_matrix": {
+    "necroswarm <-> neuroswarm": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "necroswarm <-> obliviarch": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "necroswarm <-> voidtether": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "necroswarm <-> openclaw-namespace": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "necroswarm <-> openclaw-memory-evolution": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "necroswarm <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "neuroswarm <-> obliviarch": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "neuroswarm <-> voidtether": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "neuroswarm <-> openclaw-namespace": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "neuroswarm <-> openclaw-memory-evolution": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "neuroswarm <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "obliviarch <-> voidtether": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "obliviarch <-> openclaw-namespace": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "obliviarch <-> openclaw-memory-evolution": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "obliviarch <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": true,
+      "interface_reason": "Common interfaces: retrieve",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": true
+    },
+    "voidtether <-> openclaw-namespace": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "voidtether <-> openclaw-memory-evolution": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "voidtether <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "openclaw-namespace <-> openclaw-memory-evolution": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "openclaw-namespace <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    },
+    "openclaw-memory-evolution <-> openclaw-deterministic-retrieval": {
+      "interface_compatible": false,
+      "interface_reason": "No common interfaces detected",
+      "data_compatible": true,
+      "data_reason": "JSON compatibility",
+      "overall": false
+    }
+  },
+  "dependency_conflicts": [
+    "Python version range: >=3.10 to >=3.9"
+  ],
+  "strong_connections": 1,
+  "weak_connections": 20,
+  "recommendation": "ADAPTERS_NEEDED"
+}
