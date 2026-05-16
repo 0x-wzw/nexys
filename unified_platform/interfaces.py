@@ -5,7 +5,7 @@ All frameworks must implement these protocols to participate in the platform.
 """
 
 from typing import Protocol, runtime_checkable, Any, Dict, List, Optional, Union
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
 
@@ -188,6 +188,47 @@ class Workflow:
             self.created_at = datetime.now()
 
 
+# --- Workflow aliases for backward-compatible adapters ---
+
+@dataclass
+class WorkflowStep:
+    """A single step in a workflow definition"""
+    step_id: str
+    agent_type: str
+    task_description: str
+    depends_on: List[str] = field(default_factory=list)
+    output_key: Optional[str] = None
+    parameters: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class WorkflowExecution:
+    """An active workflow execution instance"""
+    execution_id: str
+    workflow_id: str
+    status: str = "pending"
+    started_at: Optional[datetime] = None
+    completed_at: Optional[datetime] = None
+    error: Optional[str] = None
+    completed_steps: List[str] = field(default_factory=list)
+    context: Optional[Any] = None
+
+
+@dataclass
+class ExecutionContext:
+    """Context passed through workflow execution"""
+    variables: Dict[str, Any] = field(default_factory=dict)
+
+
+class WorkflowStatus:
+    """Status constants for workflow executions"""
+    PENDING = "pending"
+    RUNNING = "running"
+    COMPLETED = "completed"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+
+
 @dataclass
 class ExecutionState:
     """Current state of workflow execution"""
@@ -352,4 +393,9 @@ class ExecutionNotFoundError(Exception):
 
 class AdapterError(Exception):
     """Adapter initialization or operation failed"""
+    pass
+
+
+class ExecutionError(AdapterError):
+    """Workflow or execution failed"""
     pass

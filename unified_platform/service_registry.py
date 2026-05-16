@@ -56,20 +56,85 @@ class ServiceRegistry:
     
     def _register_builtin_adapters(self) -> None:
         """Auto-register built-in adapters that are available"""
+        # Agent Service Adapters
         try:
-            # Try to import and register SwarmWeaver
             from .adapters.swarmweaver import SwarmWeaver
             self.register_agent_adapter("swarmweaver", SwarmWeaver)
             self.register_agent_adapter("necroswarm", SwarmWeaver)  # Alias
-        except ImportError:
-            logger.debug("SwarmWeaver not available")
+            logger.info("Registered: SwarmWeaver (necroswarm)")
+        except ImportError as e:
+            logger.debug(f"SwarmWeaver not available: {e}")
         
-        # Placeholder for other adapters as they're built
-        # try:
-        #     from .adapters.neuroswarm_adapter import NeuroSwarmAdapter
-        #     self.register_agent_adapter("neuroswarm", NeuroSwarmAdapter)
-        # except ImportError:
-        #     pass
+        try:
+            from .adapters.neuroweaver import NeuroWeaver
+            self.register_agent_adapter("neuroweaver", NeuroWeaver)
+            self.register_agent_adapter("neuroswarm", NeuroWeaver)  # Alias
+            logger.info("Registered: NeuroWeaver (neuroswarm)")
+        except ImportError as e:
+            logger.debug(f"NeuroWeaver not available: {e}")
+        
+        try:
+            from .adapters.voidtether_adapter import VoidTetherAdapter
+            self.register_agent_adapter("voidtether", VoidTetherAdapter)
+            self.register_workflow_adapter("voidtether", VoidTetherAdapter)
+            logger.info("Registered: VoidTetherAdapter (agent + workflow)")
+        except ImportError as e:
+            logger.debug(f"VoidTetherAdapter not available: {e}")
+        
+        # Memory Service Adapters
+        try:
+            from .adapters.obliviarch_adapter import ObliviarchAdapter
+            self.register_memory_adapter("obliviarch", ObliviarchAdapter)
+            logger.info("Registered: ObliviarchAdapter")
+        except ImportError as e:
+            logger.debug(f"ObliviarchAdapter not available: {e}")
+        
+        try:
+            from .adapters.memory_evolution_adapter import MemoryEvolutionAdapter
+            self.register_memory_adapter("memory_evolution", MemoryEvolutionAdapter)
+            logger.info("Registered: MemoryEvolutionAdapter")
+        except ImportError as e:
+            logger.debug(f"MemoryEvolutionAdapter not available: {e}")
+        
+        try:
+            from .adapters.deterministic_retrieval_adapter import DeterministicRetrievalAdapter
+            self.register_memory_adapter("deterministic_retrieval", DeterministicRetrievalAdapter)
+            logger.info("Registered: DeterministicRetrievalAdapter")
+        except ImportError as e:
+            logger.debug(f"DeterministicRetrievalAdapter not available: {e}")
+        
+        # Workflow Service Adapters
+        try:
+            from .adapters.namespace_adapter import NamespaceAdapter
+            self.register_workflow_adapter("namespace", NamespaceAdapter)
+            logger.info("Registered: NamespaceAdapter")
+        except ImportError as e:
+            logger.debug(f"NamespaceAdapter not available: {e}")
+        
+        # Hermes agent service
+        try:
+            from .adapters.hermes_adapter import HermesAdapter
+            self.register_agent_adapter("hermes", HermesAdapter)
+            logger.info("Registered: HermesAdapter")
+        except ImportError as e:
+            logger.debug(f"HermesAdapter not available: {e}")
+        
+        # Composite adapters (implement multiple interfaces)
+        # NeuroWeaver also implements IMemoryService
+        try:
+            from .adapters.neuroweaver import NeuroWeaver
+            self.register_memory_adapter("neuroswarm_memory", NeuroWeaver)
+            logger.info("Registered: NeuroWeaver as memory adapter")
+        except ImportError:
+            pass
+        
+        # VoidTether also implements IWorkflowService
+        try:
+            from .adapters.voidtether_adapter import VoidTetherAdapter
+            self.register_workflow_adapter("voidtether_workflow", VoidTetherAdapter)
+            logger.info("Registered: VoidTetherAdapter as workflow adapter")
+        except ImportError:
+            pass
     
     def register_agent_adapter(
         self, 
